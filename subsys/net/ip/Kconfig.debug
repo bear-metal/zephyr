@@ -46,6 +46,12 @@ config NET_DEBUG_NET_PKT_NON_FRAGILE_ACCESS
 	  to know who/where the packet was freed already. Do not set this, by
 	  any means, unless you are actively debugging.
 
+module = NET_UTILS
+module-dep = NET_LOG
+module-str = Log level for utility functions in IP stack
+module-help = Enables utility functions to output debug messages.
+source "subsys/net/Kconfig.template.log_config.net"
+
 if !NET_RAW_MODE
 
 module = NET_CORE
@@ -64,12 +70,6 @@ module = NET_TC
 module-dep = NET_LOG
 module-str = Log level for network traffic class code
 module-help = Enables network traffic class code to output debug messages.
-source "subsys/net/Kconfig.template.log_config.net"
-
-module = NET_UTILS
-module-dep = NET_LOG
-module-str = Log level for utility functions in IP stack
-module-help = Enables utility functions to output debug messages.
 source "subsys/net/Kconfig.template.log_config.net"
 
 module = NET_CONTEXT
